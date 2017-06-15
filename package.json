@@ -5,10 +5,11 @@
   "description": "uploaded image previewer",
   "scripts": {
     "build": "webpack",
+    "test": "webpack",
     "watch": "webpack -w -d",
     "server": "browser-sync start --config bs-config.js",
     "start": "npm run watch & npm run server",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,8 @@
 # image-preview
 uploaded image previewer
 
+[![Build Status](https://travis-ci.org/piroz/image-preview.svg?branch=master)](https://travis-ci.org/piroz/image-preview)
+
 # install
 
 ```
