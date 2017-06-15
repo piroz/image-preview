@@ -1,9 +1,11 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: ["whatwg-fetch", "./src/index.js"],
   output: {
-    filename: "./dist/bundle.js"
+    path: __dirname + '/dist/assets/',
+    filename: "bundle.js"
   },
   resolve: {
     extensions: [".js"],
@@ -14,7 +16,18 @@ module.exports = {
             cacheDirectory: true,
             presets: ['react', 'es2015']
         }},
-        { test: /\.css$/, loader: "style-loader!css-loader" }
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+        },
+        {
+          test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+        },
+        {
+          test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: 'file-loader'
+        }
     ]
   },
   plugins: [
@@ -22,7 +35,8 @@ module.exports = {
       compress: {
           warnings: false
       }
-    })
+    }),
+    new ExtractTextPlugin("bundle.css")
   ],
   devtool: "source-map"
 }

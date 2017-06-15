@@ -1,0 +1,23 @@
+.directory-list {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+
+.directory-list .directory .directory-name {
+    font-size: 18px;
+}
+
+.directory-list .directory .directory-entries {
+    display: none;
+}
+
+.directory-list .directory .directory-entry {
+    line-height: 20px;
+    font-size: 16px;
+    margin-left: 12px;
+}
+
+.directory-list .directory .directory-entry:before {
+    content: '┗';
+}

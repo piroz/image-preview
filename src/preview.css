@@ -1,0 +1,71 @@
+.loader {
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    font-size: 5em;
+    background-color: #fff;
+    color: #ccc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 100vh;
+}
+
+.preview {
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.preview .closeBox {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+    opacity: 0;
+    z-index: 9999;
+}
+
+.preview .closeBox:hover {
+    opacity: 0.8;
+}
+
+.preview img {
+    opacity: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .preview img {
+        width: 100%;
+    }
+}
+
+@keyframes show {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes hide {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+.appear {
+  animation: show 1s ease 0.5s forwards;
+}
+
+.disappear {
+  animation: hide 1s ease 0.5s forwards;
+}

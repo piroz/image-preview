@@ -17,7 +17,7 @@ function search($dir = null) {
     } else {
         $glob = glob('*');
         $finder = function($file) {
-            return is_dir($file) && is_readable($file);
+            return is_dir($file) && is_readable($file) && $file !== 'assets';
         };
     }
 
