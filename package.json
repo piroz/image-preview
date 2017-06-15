@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/piroz/image-preview#readme",
   "dependencies": {
+    "array.prototype.find": "^2.0.4",
     "normalize.css": "^7.0.0",
+    "promise-polyfill": "^6.0.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-fa": "^4.2.0",
