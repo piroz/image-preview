@@ -44,6 +44,7 @@
 
 .preview img {
     opacity: 0;
+    cursor: e-resize;
 }
 
 @media screen and (max-width: 768px) {
