@@ -11,8 +11,10 @@ import DirectoryList from "./directorylist";
 export default class App extends Component {
 
     render() {
+        let apiurl = document.getElementById('app').getAttribute("apiurl");
+
         return (
-            <DirectoryList apiurl="api.php" />
+            <DirectoryList apiurl={apiurl} />
         );
     }
 }
