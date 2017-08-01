@@ -34,92 +34,102 @@
     animation-iteration-count: 1;
 }
 
-.loader {
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    font-size: 5em;
-    background-color: #fff;
-    color: #ccc;
-    position: fixed;
-    top: 0;
-    left: 0;
-    text-align: center;
-    line-height: 100vh;
+$breakpoint-tablet: 1024px;
+$breakpoint-mobile: 768px;
+
+@mixin max-screen($break-point) {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
 }
 
-.preview {
-    background-color: #fff;
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
-    position: fixed;
-    overflow-y: scroll;
-    z-index: 9223372036854775806;
-    top: 0;
-    left: 0;
-    display: none;
+@mixin min-screen($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
 }
 
-.preview .closeBox {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #ccc;
-    color: #fff;
-    text-align: center;
-    font-size: 2em;
-    opacity: 0;
-    z-index: 9223372036854775807;
-    text-decoration: none;
+@mixin screen($break-point-min, $break-point-max) {
+  @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+    @content;
+  }
 }
 
-.preview .closeBox:hover {
-    opacity: 0.8;
-}
+.previewWrap {
 
-.preview img {
-    opacity: 0;
-    cursor: e-resize;
-}
-
-@media screen and (max-width: 1024px) {
-    .preview .closeBox {
-        opacity: 0.7;
-        width: 1.5em;
-        right: 0;
-        left: auto;
+    .loader {
+        width: 100vw;
+        height: 100vh;
+        font-size: 5em;
+        background-color: #fff;
+        color: #ccc;
+        position: fixed;
+        z-index: 99999;
+        top: 0;
+        left: 0;
+        text-align: center;
+        line-height: 100vh;
     }
-    .preview img {
-        width: 100%;
+
+    .preview {
+        background-color: #fff;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        position: fixed;
+        overflow-y: scroll;
+        z-index: 99997;
+        top: 0;
+        left: 0;
+        display: none;
+        .closeBox {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ccc;
+            color: #fff;
+            text-align: center;
+            font-size: 2em;
+            opacity: 0;
+            z-index: 99998;
+            text-decoration: none;
+            &:hover {
+                opacity: 0.8;
+            }
+            @include max-screen($breakpoint-tablet) {
+                opacity: 0.7;
+                width: 1.5em;
+                right: 0;
+                left: auto;
+            }
+        }
+        img {
+            opacity: 0;
+            cursor: e-resize;
+            @include max-screen($breakpoint-tablet) {
+                width: 100%;
+            }
+        }
     }
 }
 
 @include keyframes(show) {
     from {
         opacity: 0;
-        width: 80%;
-        height: auto;
     }
     to {
         opacity: 1;
-        width: 100%;
-        height: auto;
     }
 }
 
 @include keyframes(hide) {
     from {
         opacity: 1;
-        width: 100%;
-        height: auto;
     }
     to {
         opacity: 0;
-        width: 80%;
-        height: auto;
     }
 }
 

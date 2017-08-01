@@ -125,7 +125,7 @@ export default class Preview extends Component {
      */
     render() {
         return (
-            <div>
+            <div className="previewWrap">
                 <div className="loader" style={this.state.showLoader ? {display: "block"} : {display: "none"}}>Loading...</div>
                 <div className="preview" style={this.state.isOpen ? {display: "block"} : {display: "none"}}>
                     

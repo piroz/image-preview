@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Directory from "./directory";
 import Preview from "./preview";
+import "./directorylist.scss";
 
 /**
  * DirectoryList
