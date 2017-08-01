@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "./preview.css";
+import "./preview.scss";
 
 /**
  * Preview
@@ -129,7 +129,7 @@ export default class Preview extends Component {
                 <div className="loader" style={this.state.showLoader ? {display: "block"} : {display: "none"}}>Loading...</div>
                 <div className="preview" style={this.state.isOpen ? {display: "block"} : {display: "none"}}>
                     
-                    <a className="closeBox" onClick={this.close}>close</a>
+                    <a className="closeBox" onClick={this.close}>×</a>
                     {this.state.isOpen ? <img onClick={this.clickHandler} className={this.state.imgClassName} onLoad={this.imgOnLoad} src={this.state.directory + "/" + this.state.filename}/> : null}
                 </div>
             </div>

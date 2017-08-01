@@ -1,0 +1,132 @@
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    } 
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($animation-name, $duration) {
+    -webkit-animation: $animation-name;
+    -moz-animation: $animation-name;
+    animation: $animation-name;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    animation-duration: $duration;
+    -webkit-animation-timing-function: ease;
+    -moz-animation-timing-function: ease;
+    animation-timing-function: ease;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    -webkit-animation-direction: forwards;
+    -moz-animation-direction: forwards;
+    animation-direction: forwards;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+.loader {
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    font-size: 5em;
+    background-color: #fff;
+    color: #ccc;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 100vh;
+}
+
+.preview {
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    position: fixed;
+    overflow: scroll;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.preview .closeBox {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ccc;
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+    opacity: 0;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+.preview .closeBox:hover {
+    opacity: 0.8;
+}
+
+.preview img {
+    opacity: 0;
+    cursor: e-resize;
+}
+
+@media screen and (max-width: 768px) {
+    .preview .closeBox {
+        opacity: 0.7;
+        width: 1.5em;
+        right: 0;
+        left: auto;
+    }
+    .preview img {
+        width: 100%;
+    }
+}
+
+@include keyframes(show) {
+    from {
+        opacity: 0;
+        width: 80%;
+        height: auto;
+    }
+    to {
+        opacity: 1;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@include keyframes(hide) {
+    from {
+        opacity: 1;
+        width: 100%;
+        height: auto;
+    }
+    to {
+        opacity: 0;
+        width: 80%;
+        height: auto;
+    }
+}
+
+.appear {
+    @include animation(show, .5s);
+}
+
+.disappear {
+    @include animation(hide, .5s);
+}
