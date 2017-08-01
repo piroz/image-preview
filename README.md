@@ -17,4 +17,4 @@ $ npm run build
 
 upload dist/* to web server
 
-[sample](https://piroz.github.io/image-preview)
+[sample](https://piroz.github.io/image-preview/test.html)

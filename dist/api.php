@@ -25,6 +25,8 @@ function search($dir = null) {
         return $finder($file);
     });
 
+    array_multisort(array_map('filemtime', $filtered), SORT_NUMERIC, SORT_DESC, $filtered);
+
     if ($subDirectorySearchMode) {
         return array_map(function($file){
             return pathinfo($file, PATHINFO_BASENAME);
