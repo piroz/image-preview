@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import DirectoryEntry from "./directoryentry";
 import {Icon} from "react-fa";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 /**
  * Directory
@@ -36,9 +35,7 @@ export default class Directory extends Component {
      * @memberof Directory
      */
     toggleDirectory(ev) {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
+        $(ev.target).next('.list-group').slideToggle();
     }
 
     /**
@@ -50,23 +47,17 @@ export default class Directory extends Component {
      */
     render() {
 
-        let component = this.state.isOpen ? this.props.directory.entry.map((file, index) =>
+        let component = this.props.directory.entry.map((file, index) =>
                     <DirectoryEntry key={index}  filename={file} directory={this.props.directory.dir} preview={this.props.preview}/>
-                ) : "";
+        );
+
+        let displayNone = {display: "none"};
 
         return (
             <div className="directory">
-                <h1 className="directory-name" onClick={this.toggleDirectory}>{this.state.isOpen ? <Icon name="folder-open-o" /> : <Icon name="folder-o" /> }{this.props.directory.dir}</h1>
-                <div className="directory-entries" style={this.state.isOpen ? {display: "block"} : {display: "none"}}>
-                <ReactCSSTransitionGroup
-                    transitionName = "fade"
-                    transitionAppear = {true}
-                    transitionEnter = {true}
-                    transitionLeave = {false}
-                    transitionAppearTimeout = {500}
-                    transitionEnterTimeout = {500}>
-                    {component}
-                </ReactCSSTransitionGroup>
+                <button onClick={this.toggleDirectory} type="button" className="btn btn-primary btn-lg btn-block">{this.state.isOpen ? <Icon name="folder-open-o" /> : <Icon name="folder-o" /> }{this.props.directory.dir}</button>
+                <div className="list-group" style={displayNone}>
+                {component}
                 </div>
             </div>
         );

@@ -40,7 +40,7 @@ export default class DirectoryEntry extends Component {
      */
     render() {
         return (
-            <div className="directory-entry" onClick={this.clickHandler}><Icon name="file-image-o" />{this.props.filename}</div>
+            <div className="list-group-item" onClick={this.clickHandler}><Icon name="file-image-o" />{this.props.filename}</div>
         );
     }
 }

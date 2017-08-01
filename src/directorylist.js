@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import Directory from "./directory";
-import "./directory-list.css";
 import Preview from "./preview";
 
 /**
